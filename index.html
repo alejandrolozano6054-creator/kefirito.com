@@ -127,6 +127,18 @@
       text-align: center;
       padding: 20px;
     }
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 0.8s ease;
+}
+
+.scroll-anim.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    
   </style>
 </head>
 
@@ -161,7 +173,7 @@
   <section id="producto">
   <h2>Nuestro Kéfir</h2>
 
-  <img src="fffffffffffff.jpeg" alt="Kéfir natural" style="width:500px; border-radius:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);"
+  <img class="scroll-anim" src="fffffffffffff.jpeg" alt="Kéfir natural" style="width:500px; border-radius:25px; box-shadow:0 10px 30px rgba(0,0,0,0.4);"
 </section>
   
   <br>
@@ -175,24 +187,24 @@
   <h2>Beneficios</h2>
 
   <div class="grid">
-    <div class="card">
+    <div class="card scroll-anim">
       <h3>🍽️ Digestivo</h3>
       <p>Restaura la microbiota intestinal, reduce inflamación, estreñimiento, diarrea, reflujo y gases.</p>
     </div>
 
-    <div class="card">
+   <div class="card scroll-anim">
       <h3>⚡ Metabólico</h3>
       <p>Auxiliar en hígado, diabetes y resistencia a la insulina.</p>
     </div>
 
-    <div class="card">
+   <div class="card scroll-anim">
       <h3>❤️ Salud general</h3>
       <p>Regula la presión arterial y ayuda a reducir el colesterol.</p>
     </div>
   </div>
 </section>
 
-<section id="video">
+<section id="video" class="scroll-anim">
   <h2>Conoce más sobre el kéfir</h2>
 
 <section id="video" style="text-align:center; margin-top:40px;">
@@ -209,7 +221,7 @@
 </section>
  
  
-<section style="text-align:center; padding:40px; background:linear-gradient(90deg,#00c9a7,#2d9cdb); color:white; border-radius:15px; margin:20px;">
+<section class="scroll-anim" style="text-align:center; padding:40px; background:linear-gradient(90deg,#00c9a7,#2d9cdb); color:white; border-radius:15px; margin:20px;">
 
   <h2 style="font-size:40px; letter-spacing:2px;">
     🔥 PRÓXIMAMENTE 🔥
@@ -244,5 +256,25 @@
   <p>© 2026 Kéfir Natural</p>
 </footer>
 
+<script>
+  const elementos = document.querySelectorAll('.scroll-anim');
+
+  function mostrarElementos() {
+    const alturaPantalla = window.innerHeight;
+
+    elementos.forEach(el => {
+      const distancia = el.getBoundingClientRect().top;
+
+      if (distancia < alturaPantalla - 100) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', mostrarElementos);
+  window.addEventListener('load', mostrarElementos);
+</script>
+
+  
 </body>
 </html>
